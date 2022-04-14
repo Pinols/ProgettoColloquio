@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
             return "Utente "+user.getNome()+" "+user.getCognome()+" registrato.";
         }catch(Exception e) {
             e.printStackTrace();
-            return null;
+            return "Modifica fallita";
         }
     }
 
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
             return "Utente modificato con successo.";
         }catch(Exception e){
             e.printStackTrace();
-            return null;
+            return "Modifica fallita";
         }
     }
 
@@ -85,6 +85,30 @@ public class UserServiceImpl implements UserService {
         }catch(Exception e){
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    public String editName(long id, String name) {
+        try{
+            Utente target=userRepository.findById(id).orElseThrow(() -> new Exception("Utente non trovato"));
+            target.setNome(name);
+            userRepository.save(target);
+            return "Modifica effettuata con successo";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Modifica fallita";
+        }
+    }
+
+    @Override
+    public String deleteUser(long id) {
+        try{
+            userRepository.deleteById(id);
+            return "Utente con id "+id+" eliminato";
+        }catch(Exception e){
+            e.printStackTrace();
+            return "Eliminazione fallita";
         }
     }
 

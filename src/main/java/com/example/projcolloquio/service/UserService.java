@@ -15,4 +15,8 @@ public interface UserService {
     List<Utente> searchUser(String searchText);
 
     Utente getUser(long id);
+
+    String editName(long id, String name);
+
+    String deleteUser(long id);
 }

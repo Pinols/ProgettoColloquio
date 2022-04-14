@@ -27,6 +27,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    // senza DTO volontariamente
     @GetMapping(value = "/get-user")
     public Utente getUser(@RequestParam long id) {
         return userService.getUser(id);
@@ -35,6 +36,16 @@ public class UserController {
     @PostMapping(value="/edit-user")
     public String editUser(@RequestBody Utente user){
         return userService.editUser(user);
+    }
+
+    @PostMapping(value = "edit-name")
+    public String editName(@RequestParam long id,@RequestParam String name){
+        return userService.editName(id,name);
+    }
+
+    @DeleteMapping(value = "delete-user")
+    public String deleteUser(@RequestParam long id){
+        return userService.deleteUser(id);
     }
 
     @GetMapping(value = "/search")
