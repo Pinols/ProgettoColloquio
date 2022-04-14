@@ -9,4 +9,10 @@ public interface UserService {
     List<UserDTO> getAllUsers();
 
     String registerUser(Utente user);
+
+    String editUser(Utente user);
+
+    List<Utente> searchUser(String searchText);
+
+    Utente getUser(long id);
 }

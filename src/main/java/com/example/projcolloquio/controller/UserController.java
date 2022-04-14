@@ -22,8 +22,23 @@ public class UserController {
        // return userService.getAllUsers();
     }
 
-    @GetMapping(value = "/getUsers")
+    @GetMapping(value = "/get-users")
     public List<UserDTO> getUsers() {
         return userService.getAllUsers();
+    }
+
+    @GetMapping(value = "/get-user")
+    public Utente getUser(@RequestParam long id) {
+        return userService.getUser(id);
+    }
+
+    @PostMapping(value="/edit-user")
+    public String editUser(@RequestBody Utente user){
+        return userService.editUser(user);
+    }
+
+    @GetMapping(value = "/search")
+    public List<Utente> searchUser(@RequestParam String searchText){
+        return userService.searchUser(searchText);
     }
 }
