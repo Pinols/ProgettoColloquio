@@ -9,6 +9,7 @@ public class UserConverter {
 
     public UserDTO convertUserToDto(Utente user){
         UserDTO dto=new UserDTO();
+        dto.setId(user.getId());
         dto.setNome(user.getNome());
         dto.setCognome(user.getCognome());
         dto.setEmail(user.getEmail());

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -29,6 +30,7 @@ public class UserServiceImpl implements UserService {
             for(Utente u:allUsers){
                 dtos.add(converter.convertUserToDto(u));
             }
+            dtos.sort(Comparator.comparing(UserDTO::getId));
             return dtos;
         }catch(Exception e){
             e.printStackTrace();
