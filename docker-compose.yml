@@ -2,7 +2,7 @@ version: "3.7"
 services:
 
   postgredb:
-    image: "postgres:alpine"
+    image: "final_db_image"
     container_name: database_container
     environment:
       POSTGRES_PASSWORD: postgres
@@ -14,7 +14,7 @@ services:
       - "5432:5432/tcp"
 
   webapp:
-    image: "springio/gs-spring-boot-docker"
+    image: "pinols/spring"
     container_name: webapp_container
     environment:
       - DATABASE_HOST=postgredb
